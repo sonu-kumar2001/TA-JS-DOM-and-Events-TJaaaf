@@ -1,5 +1,4 @@
 let form = document.querySelector('form');
-let container = document.querySelector('.container');
 let input = document.querySelector('input');
 let ul = document.querySelector('ul');
 let userInfo = [];
@@ -25,6 +24,8 @@ function createUi() {
 
         span.addEventListener('click', function(event) {
             event.currentTarget.parentElement.remove();
+            let index = userInfo.indexOf(element);
+            userInfo.splice(index);
         });
     });
 }
