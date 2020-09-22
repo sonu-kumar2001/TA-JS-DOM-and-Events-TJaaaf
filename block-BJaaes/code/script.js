@@ -13,89 +13,91 @@ function handleSubmit(event) {
   userInfo.passwordCheck = form.elements['password-check'].value;
   
   checkingError(event.target.elements);
-  empty();
+  forEachElement();
 }
 
 form.addEventListener("submit", handleSubmit);
 
 function checkingError(e) {
-  if(userInfo.userName.length < 4) {
+  if(userInfo.userName == '' || userInfo.userName.length < 4) {
     document.querySelector('.username').textContent = `username can't be less than 4 characters `;
     e.username.parentElement.classList.add('error');
   } else {
     e.username.parentElement.classList.add('success');
   } 
 
-  if([...userInfo.name].filter(element => !isNaN(element)).length != 0) {
+  if(userInfo.name == ''|| [...userInfo.name].filter(element => !isNaN(element)).length != 0) {
     document.querySelector('.name').textContent = `You can't use number in the name field `;
     e.name.parentElement.classList.add('error');
   }else {
     e.name.parentElement.classList.add('success');
   } 
 
-  if(userInfo.email.length < 6) {
+  if(userInfo.email == ''||userInfo.email.length < 6) {
       document.querySelector('.email').textContent = `Not a valid email `;
       e.email.parentElement.classList.add('error');
     } else {
       e.email.parentElement.classList.add('success');
     }
 
-    if([...userInfo.phone].filter(element => isNaN(element)).length !=0 || userInfo.length<7) {
+    if(userInfo.phone == ''||[...userInfo.phone].filter(element => isNaN(element)).length !=0 || userInfo.length<7) {
       document.querySelector('.phone').textContent = `Phone number can only contain numbers `;
       e.phone.parentElement.classList.add('error');
     }else {
       e.phone.parentElement.classList.add('success');
     } 
 
-    if([...userInfo.password].filter(element => isNaN(element)).length !=0 || userInfo.password.includes('@')) {
+    if(userInfo.password == ''||[...userInfo.password].filter(element => isNaN(element)).length !=0 || userInfo.password.includes('@')) {
       document.querySelector('.password').textContent = `Password must contain at least a symbol and a number should be less than 7 character `;
       e.password.parentElement.classList.add('error');
     }else {
       e.password.parentElement.classList.add('success');
     }
 
-    if(userInfo.password !== userInfo.passwordCheck) {
+    if(userInfo.passwordCheck == ''||userInfo.password !== userInfo.passwordCheck) {
       document.querySelector('.password1').textContent = `Password and Confirm password is not same `;
       e['password-check'].parentElement.classList.add('error');
     }else {
       e['password-check'].parentElement.classList.add('success');
     }
 
-    [...formControl].every(element => {
-      if(element.classList.contains('success')) {
-        alert('user added succesfully');
-      }
-    });
+    
+   
 }
 
-function empty() {
-  [...input].forEach(element => {
-    if(element.value == '') {
-      element.nextElementSibling.textContent = `${element.name} can not be blank`;
-      element.classList.add('error');
-  }else {
-    element.classList.add('success');
-  } });
-}
-
-// function forEachElement() {
-//  let isSuccess = [...formControl].every(element => {
-//    element.classList.contains('success');
+// function empty() {
+//   [...formControl].every(element => {
+//     if(element.classList.contains('success')) {
+//       alert('user added succesfully');
+//     }
 //   });
-//         if(!isSuccess) {
-//           [...input].forEach(element => {
-//             if(element.value == '') {
-//               element.nextElementSibling.textContent = `${element.name} can not be blank`;
-//               element.classList.add('error');
-//           }else {
-//             element.classList.add('success');
-//           }
-          
-//           });
-// } else {
-//   alert('user added succesfully');
+//   [...input].forEach(element => {
+//     if(element.value == '') {
+//       element.nextElementSibling.textContent = `${element.name} can not be blank`;
+//       element.classList.add('error');
+//   }else {
+//     element.classList.add('success');
+//   } });
 // }
 
-// }
+function forEachElement() {
+ let isSuccess = [...formControl].every(element => {
+   element.classList.contains('success');
+  });
+        if(!isSuccess) {
+          [...input].forEach(element => {
+            if(element.value == '') {
+              element.nextElementSibling.textContent = `${element.name} can not be blank`;
+              element.classList.add('error');
+          }else {
+            element.classList.add('success');
+          }
+          
+          });
+} else {
+  alert('user added succesfully');
+}
+
+}
 
 
