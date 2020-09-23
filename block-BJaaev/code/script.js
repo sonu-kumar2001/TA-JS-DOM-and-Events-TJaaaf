@@ -14,6 +14,7 @@ function handler(event) {
         form.elements.text.value = '';
         createUi(userInfo);
     }
+    isTodo();
     localStorage.setItem('userInfo',JSON.stringify(userInfo));
 }
 
@@ -22,6 +23,7 @@ function deleteHAndler(event) {
     userInfo.splice(id,1);
     localStorage.setItem('userInfo',JSON.stringify(userInfo));
     createUi(userInfo);
+    isTodo();
 }
 function toggle(event) {
     let id = event.target.dataset.id;
@@ -85,15 +87,23 @@ function filter(event) {
     } else if(event.target.innerText == 'Completed Clear') {
         [...root.children].forEach(element => {
            if(element.children[0].checked) {
+            element.children[0].remove();
             userInfo.splice(element.children[0].dataset.id,1);
            } 
-        })
+        });
         createUi(userInfo);
     }
     localStorage.setItem('userInfo',JSON.stringify(userInfo));
+    isTodo();
 }
 
 button.addEventListener('click',filter);
 
+function isTodo() {
+    button.innerHTML = '';
+    if(userInfo.length>0) {
+        createButton();
+    }
+}
 createUi(userInfo);
-createButton();
+isTodo();
