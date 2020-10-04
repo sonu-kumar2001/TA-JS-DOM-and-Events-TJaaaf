@@ -1,0 +1,93 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* custom design  */
+.container {
+    max-width: 700px;
+    margin: 20px auto;
+}
+.box {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 24px;
+    background-color: #706E71;
+    padding: 20px;
+}
+.inner-box {
+    height: 130px;
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #141214;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px 2px #303131;
+    border-radius: 4px;
+}
+
+i {
+    font-size: 30px;
+    color: #ffffff;
+}
+.hidden {
+    color:  #141214;
+}
+.selected {
+    background-color: #02B3E4;
+}
+.disabled {
+    pointer-events: none;
+    cursor: pointer;
+}
+.error {
+ background-color: rgb(243, 16, 16);
+}
+
+.success {
+    background-color:  #02B3E4;
+}
